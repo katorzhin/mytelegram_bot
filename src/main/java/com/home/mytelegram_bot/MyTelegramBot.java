@@ -18,16 +18,20 @@ public class MyTelegramBot extends TelegramLongPollingBot {
     public void onUpdateReceived(Update update) {
         Message message = update.getMessage();
 
-        SendMessage response = new SendMessage();
-        response.setText("Hello, " + message.getFrom().getFirstName() + ".Welcome to the telegram bot :)\n" +
-                "You have send me: " + message.getText());
-        response.setChatId(message.getChatId());
-        response.setReplyMarkup(getMainMenu());
+
         try {
             execute(response);
         } catch (TelegramApiException e) {
             e.printStackTrace();
         }
+    }
+
+    private SendMessage greetingMessage(Message message){
+        SendMessage response = new SendMessage();
+        response.setText("Hello, " + message.getFrom().getFirstName() + ".Welcome to the telegram bot :)\n" +
+                "You have send me: " + message.getText());
+        response.setChatId(message.getChatId());
+        response.setReplyMarkup(getMainMenu());
     }
 
     @Override
