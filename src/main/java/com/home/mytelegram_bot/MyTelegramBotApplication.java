@@ -4,6 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.telegram.telegrambots.ApiContextInitializer;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
+import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException;
 
 @SpringBootApplication
@@ -16,5 +17,7 @@ public class MyTelegramBotApplication {
         TelegramBotsApi telegramBotsApi = new TelegramBotsApi();
         telegramBotsApi.registerBot(new MyTelegramBot());
     }
+
+
 
 }
